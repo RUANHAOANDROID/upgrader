@@ -14,7 +14,7 @@ var (
 )
 
 func RunScript(ctx context.Context) {
-	kill6688()
+	Kill6688()
 	// 启动ledshowktfw服务
 	cmd := exec.Command("./runner/app/bin/ledshowktfw")
 
@@ -22,15 +22,17 @@ func RunScript(ctx context.Context) {
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		pkg.Log.Println("Error:", err)
+		IsRunning = false
 		return
 	}
 
 	// 启动命令
 	if err := cmd.Start(); err != nil {
 		pkg.Log.Println("Error:", err)
+		IsRunning = false
 		return
 	}
-
+	IsRunning = true
 	// 读取并输出命令的输出
 	scanner := bufio.NewScanner(stdout)
 	for scanner.Scan() {
@@ -48,11 +50,7 @@ func RunScript(ctx context.Context) {
 	}
 }
 
-func StopScript() error {
-	kill6688()
-	return nil
-}
-func kill6688() {
+func Kill6688() {
 	// 执行Shell脚本
 	cmd := exec.Command("/bin/sh", "-c", "./kill6688.sh")
 	// 执行命令并获取输出
@@ -63,7 +61,5 @@ func kill6688() {
 	}
 	// 输出执行结果
 	fmt.Println(string(output))
-}
-func runKtorSever() {
-
+	IsRunning = false
 }
