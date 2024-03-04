@@ -5,4 +5,4 @@ runnerdir: runner
 tempdir: temp
 timer: 2m0s
 url: http://limit.api.yyxcloud.com/
-version: "1"
+version: "100102"
