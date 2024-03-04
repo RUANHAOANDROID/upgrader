@@ -31,7 +31,7 @@ func RunScript(ctx context.Context) {
 	// 将命令的标准输出重定向到日志记录器
 	cmd.Stdout = logger.Writer()
 	// 开始执行命令
-	if err := cmd.Start(); err != nil {
+	if err := cmd.Run(); err != nil {
 		pkg.Log.Printf("Failed to start script: %v\n", err)
 		IsRunning = false
 		return
