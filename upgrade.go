@@ -1,14 +1,13 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
-	"os/exec"
 	"path/filepath"
-	"runtime"
 	"strings"
 	"upgrader/config"
 	"upgrader/pkg"
@@ -25,7 +24,7 @@ type VersionResponse struct {
 }
 
 // Auto 假定初始时没有包
-func Auto() {
+func Auto(ctx context.Context, cancel context.CancelFunc) {
 	// 读取本地版本信息
 	conf, err := config.Load("./config.yml")
 	if err != nil {
@@ -57,6 +56,7 @@ func Auto() {
 	//pkg.Log.Fatalf("check update resp code=%d,msg=%s,%s", resp.Code, resp.Msg, resp.Data)
 	pkg.Log.Infof("check update resp %v", resp)
 	if resp.Code == 1 {
+		cancel()
 		fileName := resp.Data.FileName
 		version := resp.Data.VersionCode
 		downloadUrl := resp.Data.DownloadUrl
@@ -107,24 +107,10 @@ func Auto() {
 		}
 		conf.Version = version
 		conf.Save("config.yml")
-		runner(filepath.Join(newDir, "bin"))
+		runScript(ctx)
 	} else {
 		pkg.Log.Println("未发现更新")
 	}
-}
-
-func runner(dir string) bool {
-	cmdPath := filepath.Join("./"+dir, "ledshowktfw")
-	if runtime.GOOS == "linux" {
-		// 在Linux中执行 ledshowktfw
-		command := exec.Command(cmdPath)
-		command.Run()
-	} else if runtime.GOOS == "windows" {
-		// 在Windows中执行 ledshowktfw.bat
-		exec.Command("cmd", "/c", cmdPath+".bat").Run()
-	}
-	// 打印命令的输出
-	return false
 }
 
 func copyFileTo(targetDir string, targetFile string, sourceFile string) error {

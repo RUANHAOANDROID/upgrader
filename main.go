@@ -1,7 +1,11 @@
 package main
 
 import (
+	"context"
 	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
 	"upgrader/config"
 )
 
@@ -13,5 +17,10 @@ func main() {
 		panic("请完善配置config.yml")
 	}
 	fmt.Println("Timer interval", conf.Timer)
-	StartTimer(conf)
+	// ---------------runner -------------
+	ctx, cancel := context.WithCancel(context.Background())
+	// 监听系统中断信号
+	sig := make(chan os.Signal, 1)
+	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
+	StartTimer(conf, ctx, cancel)
 }
