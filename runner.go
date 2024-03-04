@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"os/exec"
+	"upgrader/pkg"
 )
 
 var (
@@ -13,36 +14,37 @@ var (
 )
 
 func RunScript(ctx context.Context) {
+	kill6688()
 	// 启动ledshowktfw服务
 	cmd := exec.Command("./runner/app/bin/ledshowktfw")
 
 	// 创建管道来捕获命令的输出
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
-		fmt.Println("Error:", err)
+		pkg.Log.Println("Error:", err)
 		return
 	}
 
 	// 启动命令
 	if err := cmd.Start(); err != nil {
-		fmt.Println("Error:", err)
+		pkg.Log.Println("Error:", err)
 		return
 	}
 
 	// 读取并输出命令的输出
 	scanner := bufio.NewScanner(stdout)
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+		pkg.Log.Println(scanner.Text())
 	}
 
 	// 检查是否发生错误
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error:", err)
+		pkg.Log.Println("Error:", err)
 	}
 
 	// 等待命令完成
 	if err := cmd.Wait(); err != nil {
-		fmt.Println("Error:", err)
+		pkg.Log.Println("Error:", err)
 	}
 }
 
