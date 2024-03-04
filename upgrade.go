@@ -2,10 +2,14 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"runtime"
+	"strings"
 	"upgrader/config"
 	"upgrader/pkg"
 )
@@ -93,9 +97,32 @@ func Auto() {
 			pkg.Log.Error("解压更新包错误：" + err.Error())
 			return
 		}
+		//更名文件
+		old := filepath.Join(conf.RunnerDir, strings.TrimSuffix(fileName, ".tar"))
+		newDir := filepath.Join(conf.RunnerDir, "app")
+		err = os.Rename(old, newDir)
+		if err != nil {
+			fmt.Println("重命名失败:", err)
+			return
+		}
+		runner(filepath.Join(newDir, "bin"))
 	} else {
 		pkg.Log.Println("未发现更新")
 	}
+}
+
+func runner(dir string) bool {
+	cmdPath := filepath.Join("./"+dir, "ledshowktfw")
+	if runtime.GOOS == "linux" {
+		// 在Linux中执行 ledshowktfw
+		command := exec.Command(cmdPath)
+		command.Run()
+	} else if runtime.GOOS == "windows" {
+		// 在Windows中执行 ledshowktfw.bat
+		exec.Command("cmd", "/c", cmdPath+".bat").Run()
+	}
+	// 打印命令的输出
+	return false
 }
 
 func copyFileTo(targetDir string, targetFile string, sourceFile string) error {
@@ -119,7 +146,6 @@ func copyFileTo(targetDir string, targetFile string, sourceFile string) error {
 	return nil
 }
 func extractTar(targetDir string, fileName, tarFile string) error {
-
 	source, err := os.Open(tarFile)
 	if err != nil {
 		return err
@@ -130,11 +156,6 @@ func extractTar(targetDir string, fileName, tarFile string) error {
 		pkg.Log.Println("解压缩失败" + err.Error())
 		return err
 	}
-	//format := archiver.Tar{}
-	//err = format.Extract(context.Background(), source, []string{targetDir}, nil)
-	//if err != nil {
-	//	return err
-	//}
 	pkg.Log.Println("解压缩完成")
 	return nil
 }

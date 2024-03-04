@@ -568,3 +568,53 @@
 [2024-03-04 14:05:18][info][upgrade.go:152 main.checkDIr] 文件夹 backup 已存在
 
 [2024-03-04 14:05:31][info][upgrade.go:138 main.extractTar] 解压缩完成
+[2024-03-04 14:10:31][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 14:10:31][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 14:10:32][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 14:10:32][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 14:10:32][info][upgrade.go:152 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 14:10:32][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 14:10:34][info][upgrade.go:152 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 14:10:34][info][upgrade.go:138 main.extractTar] 解压缩完成
+[2024-03-04 14:15:34][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 14:15:34][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 14:15:34][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 14:15:34][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 14:15:34][info][upgrade.go:152 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 14:15:34][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 14:15:36][info][upgrade.go:152 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 14:15:36][info][upgrade.go:138 main.extractTar] 解压缩完成
+[2024-03-04 14:20:36][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 14:20:36][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 14:20:36][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 14:20:36][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 14:20:36][info][upgrade.go:152 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 14:20:36][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 14:20:38][info][upgrade.go:152 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 14:20:38][info][upgrade.go:138 main.extractTar] 解压缩完成
+[2024-03-04 14:22:40][info][upgrade.go:35 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 14:22:40][info][upgrade.go:38 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 14:22:40][info][upgrade.go:58 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 14:22:41][info][upgrade.go:63 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 14:22:41][info][upgrade.go:173 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 14:22:41][info][upgrade.go:72 main.Auto] 下载更新包...
+[2024-03-04 14:22:43][info][upgrade.go:173 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 14:22:46][info][upgrade.go:159 main.extractTar] 解压缩完成
+[2024-03-04 14:24:17][info][upgrade.go:35 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 14:24:17][info][upgrade.go:38 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 14:24:17][info][upgrade.go:58 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 14:24:27][info][upgrade.go:63 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 14:24:27][info][upgrade.go:173 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 14:24:27][info][upgrade.go:72 main.Auto] 下载更新包...
+[2024-03-04 14:24:29][info][upgrade.go:173 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 14:24:31][info][upgrade.go:159 main.extractTar] 解压缩完成
