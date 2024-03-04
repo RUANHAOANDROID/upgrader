@@ -113,7 +113,7 @@ func Auto(ctx context.Context, cancel context.CancelFunc) {
 			return
 		}
 		cancel()
-		runScript(ctx)
+		go RunScript(ctx)
 	} else {
 		pkg.Log.Println("未发现更新")
 	}

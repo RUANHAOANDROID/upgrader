@@ -6,7 +6,7 @@ import (
 	"upgrader/pkg"
 )
 
-func runScript(ctx context.Context) {
+func RunScript(ctx context.Context) {
 	// 在这里替换为你要执行的脚本和参数
 	cmd := exec.CommandContext(ctx, "./runner/app/bin/ledshowktfw")
 
