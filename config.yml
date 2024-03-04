@@ -3,6 +3,6 @@ backupdir: backup
 filename: ledshow.tar
 runnerdir: runner
 tempdir: temp
-timer: 5m0s
+timer: 2m0s
 url: http://limit.api.yyxcloud.com/
 version: "100101"
