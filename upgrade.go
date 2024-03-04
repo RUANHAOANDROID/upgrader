@@ -91,7 +91,14 @@ func Auto(ctx context.Context, cancel context.CancelFunc) {
 			pkg.Log.Error("拷贝更新包错误：" + err.Error())
 			return
 		}
-
+		// 删除运行目录下所有文件
+		if _, err := os.Stat(conf.RunnerDir); os.IsNotExist(err) {
+			fmt.Printf("Directory %s does not exist\n", conf.RunnerDir)
+		}
+		err = os.RemoveAll(conf.RunnerDir)
+		if err != nil {
+			fmt.Printf("Failed to remove directory: %v\n", err)
+		}
 		// 解压到运行目录
 		if err := extractTar(conf.RunnerDir, fileName, tarFile.Name()); err != nil {
 			pkg.Log.Error("解压更新包错误：" + err.Error())
