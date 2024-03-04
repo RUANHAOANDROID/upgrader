@@ -6,13 +6,19 @@ import (
 	"upgrader/pkg"
 )
 
+var (
+	IsRunning bool
+)
+
 func RunScript(ctx context.Context) {
+	IsRunning = true
 	// 在这里替换为你要执行的脚本和参数
 	cmd := exec.CommandContext(ctx, "./runner/app/bin/ledshowktfw")
 
 	// 开始执行命令
 	if err := cmd.Start(); err != nil {
 		pkg.Log.Printf("Failed to start script: %v\n", err)
+		IsRunning = false
 		return
 	}
 
@@ -22,6 +28,9 @@ func RunScript(ctx context.Context) {
 		pkg.Log.Println("Cancellation signal received, terminating script...")
 		if err := cmd.Process.Kill(); err != nil {
 			pkg.Log.Printf("Failed to kill script: %v\n", err)
+			IsRunning = true
+		} else {
+			IsRunning = false
 		}
 	}()
 

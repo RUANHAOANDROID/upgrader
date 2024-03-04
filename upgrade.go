@@ -112,8 +112,12 @@ func Auto(ctx context.Context, cancel context.CancelFunc) {
 			fmt.Println("重命名失败:", err)
 			return
 		}
-		cancel()
-		go RunScript(ctx)
+		go func() {
+			if IsRunning {
+				cancel()
+			}
+			RunScript(ctx)
+		}()
 	} else {
 		pkg.Log.Println("未发现更新")
 	}
