@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 	"upgrader/config"
 	"upgrader/pkg"
 )
@@ -119,7 +120,7 @@ func Auto(ctx context.Context, cancel context.CancelFunc) {
 			RunScript(ctx)
 		}()
 	} else {
-		pkg.Log.Println("未发现更新")
+		pkg.Log.Println(time.Now().String(), "未发现更新", IsRunning)
 	}
 }
 
