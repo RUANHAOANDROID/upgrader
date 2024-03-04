@@ -11,10 +11,10 @@ var (
 )
 
 func RunScript(ctx context.Context) {
+	pkg.Log.Printf("RunScript ---")
 	IsRunning = true
 	// 在这里替换为你要执行的脚本和参数
 	cmd := exec.CommandContext(ctx, "./runner/app/bin/ledshowktfw")
-
 	// 开始执行命令
 	if err := cmd.Start(); err != nil {
 		pkg.Log.Printf("Failed to start script: %v\n", err)
@@ -31,6 +31,7 @@ func RunScript(ctx context.Context) {
 			IsRunning = true
 		} else {
 			IsRunning = false
+			pkg.Log.Printf("Script Killed")
 		}
 	}()
 

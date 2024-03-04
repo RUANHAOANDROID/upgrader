@@ -108,19 +108,23 @@ func Auto(ctx context.Context, cancel context.CancelFunc) {
 		//更名文件
 		old := filepath.Join(conf.RunnerDir, strings.TrimSuffix(fileName, ".tar"))
 		newDir := filepath.Join(conf.RunnerDir, "app")
+		pkg.Log.Printf("Rename old=%s,new=%s", old, newDir)
 		err = os.Rename(old, newDir)
 		if err != nil {
 			fmt.Println("重命名失败:", err)
 			return
 		}
+		pkg.Log.Println("Rename ok")
 		go func() {
+			pkg.Log.Printf("IsRunning=%v", IsRunning)
 			if IsRunning {
 				cancel()
+				pkg.Log.Printf("IsRunning=%v cancel", IsRunning)
 			}
 			RunScript(ctx)
 		}()
 	} else {
-		pkg.Log.Println(time.Now().String(), "未发现更新", IsRunning)
+		pkg.Log.Printf("time=%s,%s,IsRunning=%v", time.Now().String(), "未发现更新", IsRunning)
 	}
 }
 
