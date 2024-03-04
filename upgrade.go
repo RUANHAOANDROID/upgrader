@@ -127,7 +127,7 @@ func Auto(ctx context.Context, cancel context.CancelFunc) {
 		pkg.Log.Printf("time=%s,%s,IsRunning=%v", time.Now().String(), "未发现更新", IsRunning)
 		if !IsRunning {
 			pkg.Log.Printf("IsRunning=%v ,挂起程序", IsRunning)
-			RunScript(ctx)
+			go RunScript(ctx)
 		}
 	}
 }
