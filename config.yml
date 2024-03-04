@@ -1,0 +1,10 @@
+
+  url: "http://limit.api.yyxcloud.com/"
+  version: '0'
+  runnerDir: "runner"
+  backupDIr: "backup"
+  tempDIr: "temp"
+  authCode: "4jyim"
+  fileName: "ledshow.tar"
+  timer: 5m0s #间隔时间 分钟
+
