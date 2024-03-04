@@ -56,12 +56,12 @@ func Auto(ctx context.Context, cancel context.CancelFunc) {
 	//pkg.Log.Fatalf("check update resp code=%d,msg=%s,%s", resp.Code, resp.Msg, resp.Data)
 	pkg.Log.Infof("check update resp %v", resp)
 	if resp.Code == 1 {
-		cancel()
 		fileName := resp.Data.FileName
 		version := resp.Data.VersionCode
 		downloadUrl := resp.Data.DownloadUrl
 		pkg.Log.Infof("发现新版本 version=%v ,file=%v", version, fileName)
-
+		conf.Version = version
+		conf.Save("config.yml")
 		// 创建备份目录和临时目录
 		if err := checkDIr(conf.TempDir); err != nil {
 			pkg.Log.Error("创建临时目录错误：" + err.Error())
@@ -112,8 +112,7 @@ func Auto(ctx context.Context, cancel context.CancelFunc) {
 			fmt.Println("重命名失败:", err)
 			return
 		}
-		conf.Version = version
-		conf.Save("config.yml")
+		cancel()
 		runScript(ctx)
 	} else {
 		pkg.Log.Println("未发现更新")
