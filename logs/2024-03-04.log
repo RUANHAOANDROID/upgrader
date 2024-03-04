@@ -460,3 +460,111 @@
 [2024-03-04 13:33:08][info][upgrade.go:108 main.extractTar] 解压缩完成
 [2024-03-04 13:33:10][info][upgrade.go:122 main.checkDIr] 文件夹 runner 已存在
 
+[2024-03-04 13:35:25][info][upgrade.go:33 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:35:25][info][upgrade.go:36 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:35:25][info][upgrade.go:56 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:35:26][info][upgrade.go:62 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:35:26][info][upgrade.go:140 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:35:26][info][upgrade.go:71 main.Auto] 下载更新包...
+[2024-03-04 13:35:28][info][upgrade.go:140 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 13:35:36][info][upgrade.go:126 main.extractTar] 解压缩完成
+[2024-03-04 13:40:36][info][upgrade.go:33 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:40:36][info][upgrade.go:36 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:40:36][info][upgrade.go:56 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:44:31][info][upgrade.go:62 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:44:31][info][upgrade.go:140 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:44:31][info][upgrade.go:71 main.Auto] 下载更新包...
+[2024-03-04 13:44:37][info][upgrade.go:33 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:44:37][info][upgrade.go:36 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:44:37][info][upgrade.go:56 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:44:37][info][upgrade.go:61 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:44:37][info][upgrade.go:143 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:44:37][info][upgrade.go:70 main.Auto] 下载更新包...
+[2024-03-04 13:44:39][info][upgrade.go:143 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 13:44:39][info][upgrade.go:129 main.extractTar] 解压缩完成
+[2024-03-04 13:46:54][info][upgrade.go:33 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:46:54][info][upgrade.go:36 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:46:54][info][upgrade.go:56 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:46:54][info][upgrade.go:61 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:46:54][info][upgrade.go:148 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:46:54][info][upgrade.go:70 main.Auto] 下载更新包...
+[2024-03-04 13:46:57][info][upgrade.go:148 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 13:46:57][info][upgrade.go:134 main.extractTar] 解压缩完成
+[2024-03-04 13:51:57][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:51:57][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:51:57][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:51:57][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:51:57][info][upgrade.go:148 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:51:57][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 13:51:58][info][upgrade.go:148 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 13:51:58][info][upgrade.go:134 main.extractTar] 解压缩完成
+[2024-03-04 13:56:58][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:56:58][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:56:58][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:56:58][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:56:58][info][upgrade.go:148 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:56:58][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 13:57:00][info][upgrade.go:148 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 13:57:00][info][upgrade.go:134 main.extractTar] 解压缩完成
+[2024-03-04 13:57:19][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:57:20][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:57:21][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:57:21][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:57:21][info][upgrade.go:148 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:57:21][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 13:57:22][info][upgrade.go:148 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 13:57:28][info][upgrade.go:134 main.extractTar] 解压缩完成
+[2024-03-04 13:57:53][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:57:55][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:57:56][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:57:56][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:57:56][info][upgrade.go:148 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:57:56][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 13:57:57][info][upgrade.go:148 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 13:58:56][info][upgrade.go:134 main.extractTar] 解压缩完成
+[2024-03-04 13:59:25][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 13:59:26][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 13:59:28][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 13:59:28][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 13:59:28][info][upgrade.go:152 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 13:59:28][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 13:59:29][info][upgrade.go:152 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 13:59:41][info][upgrade.go:130 main.extractTar] 解压缩失败gzip: invalid header
+[2024-03-04 13:59:41][error][upgrade.go:93 main.Auto] 解压更新包错误：gzip: invalid header
+[2024-03-04 14:00:42][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 14:00:43][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 14:00:44][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 14:00:46][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 14:00:46][info][upgrade.go:152 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 14:00:46][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 14:00:48][info][upgrade.go:152 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 14:01:09][info][upgrade.go:138 main.extractTar] 解压缩完成
+[2024-03-04 14:05:15][info][upgrade.go:31 main.Auto] &{http://limit.api.yyxcloud.com/ 0 4jyim runner backup temp ledshow.tar 5m0s}
+[2024-03-04 14:05:16][info][upgrade.go:34 main.Auto] http://limit.api.yyxcloud.com//gateMachine/queryVersion/4jyim/0
+[2024-03-04 14:05:17][info][upgrade.go:54 main.Auto] check update resp {操作成功 1 {2233 https://ocs-oss.oss-cn-beijing.aliyuncs.com/upload/emcs-limit/ledshowktfw-0.0.9.tar ledshowktfw-0.0.9.tar}}
+[2024-03-04 14:05:17][info][upgrade.go:59 main.Auto] 发现新版本 version=2233 ,file=ledshowktfw-0.0.9.tar
+[2024-03-04 14:05:17][info][upgrade.go:152 main.checkDIr] 文件夹 temp 已存在
+
+[2024-03-04 14:05:17][info][upgrade.go:68 main.Auto] 下载更新包...
+[2024-03-04 14:05:18][info][upgrade.go:152 main.checkDIr] 文件夹 backup 已存在
+
+[2024-03-04 14:05:31][info][upgrade.go:138 main.extractTar] 解压缩完成

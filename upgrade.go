@@ -1,9 +1,7 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
-	"github.com/mholt/archiver/v4"
 	"io"
 	"net/http"
 	"os"
@@ -54,12 +52,11 @@ func Auto() {
 	//pkg.Log.Fatalf("check update resp code=%d,msg=%s", resp.Code, resp.Msg)
 	//pkg.Log.Fatalf("check update resp code=%d,msg=%s,%s", resp.Code, resp.Msg, resp.Data)
 	pkg.Log.Infof("check update resp %v", resp)
-	// 解析JSON响应
 	if resp.Code == 1 {
-		fileNam := resp.Data.FileName
+		fileName := resp.Data.FileName
 		version := resp.Data.VersionCode
 		downloadUrl := resp.Data.DownloadUrl
-		pkg.Log.Infof("发现新版本 version=%v ,file=%v", version, fileNam)
+		pkg.Log.Infof("发现新版本 version=%v ,file=%v", version, fileName)
 
 		// 创建备份目录和临时目录
 		if err := checkDIr(conf.TempDir); err != nil {
@@ -69,7 +66,7 @@ func Auto() {
 
 		// 下载更新包
 		pkg.Log.Println("下载更新包...")
-		filePath := filepath.Join(conf.TempDir, fileNam)
+		filePath := filepath.Join(conf.TempDir, fileName)
 		tarFile, err := os.Create(filePath)
 		if err != nil {
 			pkg.Log.Error("创建文件错误：" + err.Error())
@@ -81,19 +78,18 @@ func Auto() {
 			pkg.Log.Error("下载文件错误：" + err.Error())
 			return
 		}
-
 		// 创建备份目录并拷贝更新包
 		if err := checkDIr(conf.BackupDir); err != nil {
 			pkg.Log.Error("创建备份目录错误：" + err.Error())
 			return
 		}
-		if err := copyFileTo(conf.BackupDir, fileNam, tarFile); err != nil {
+		if err := copyFileTo(conf.BackupDir, fileName, tarFile.Name()); err != nil {
 			pkg.Log.Error("拷贝更新包错误：" + err.Error())
 			return
 		}
 
 		// 解压到运行目录
-		if err := extractTar(tarFile); err != nil {
+		if err := extractTar(conf.RunnerDir, fileName, tarFile.Name()); err != nil {
 			pkg.Log.Error("解压更新包错误：" + err.Error())
 			return
 		}
@@ -102,27 +98,43 @@ func Auto() {
 	}
 }
 
-func copyFileTo(targetDir string, fileName string, source *os.File) error {
-	// 创建目标文件
-	destination, err := os.Create(targetDir + "/" + fileName)
+func copyFileTo(targetDir string, targetFile string, sourceFile string) error {
+	source, err := os.Open(sourceFile)
 	if err != nil {
-		pkg.Log.Printf("无法创建目标文件 %s: %v\n", fileName, err)
 		return err
 	}
-	defer destination.Close()
+	defer source.Close()
+
+	backFile, err := os.Create(targetDir + "/" + targetFile)
+	if err != nil {
+		pkg.Log.Error("创建文件错误：" + err.Error())
+		return err
+	}
+	defer backFile.Close()
 	//拷贝到目录
-	if _, err := io.Copy(destination, source); err != nil {
+	if _, err := io.Copy(backFile, source); err != nil {
 		pkg.Log.Printf("无法拷贝 %s: %v\n", source.Name(), err)
 		return err
 	}
 	return nil
 }
-func extractTar(tarFile *os.File) error {
-	format := archiver.Tar{}
-	err := format.Extract(context.Background(), tarFile, []string{}, nil)
+func extractTar(targetDir string, fileName, tarFile string) error {
+
+	source, err := os.Open(tarFile)
 	if err != nil {
 		return err
 	}
+	defer source.Close()
+	err = pkg.UnTar(targetDir, tarFile, false)
+	if err != nil {
+		pkg.Log.Println("解压缩失败" + err.Error())
+		return err
+	}
+	//format := archiver.Tar{}
+	//err = format.Extract(context.Background(), source, []string{targetDir}, nil)
+	//if err != nil {
+	//	return err
+	//}
 	pkg.Log.Println("解压缩完成")
 	return nil
 }
