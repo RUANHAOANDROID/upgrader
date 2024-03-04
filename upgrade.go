@@ -105,6 +105,8 @@ func Auto() {
 			fmt.Println("重命名失败:", err)
 			return
 		}
+		conf.Version = version
+		conf.Save("config.yml")
 		runner(filepath.Join(newDir, "bin"))
 	} else {
 		pkg.Log.Println("未发现更新")
