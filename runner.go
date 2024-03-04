@@ -33,7 +33,7 @@ func RunScript(ctx context.Context) {
 	// 标记当前脚本正在运行
 	IsRunning = true
 	// 开始执行命令
-	if err := cmd.Run(); err != nil {
+	if err := cmd.Start(); err != nil {
 		pkg.Log.Error("Failed to start script: %v\n", err)
 		IsRunning = false
 		return
