@@ -1,15 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"fmt"
-	"log"
-	"net"
-	"os"
 	"os/exec"
-	"strconv"
-	"strings"
-	"upgrader/pkg"
 )
 
 var (
@@ -18,119 +13,55 @@ var (
 )
 
 func RunScript(ctx context.Context) {
-	pkg.Log.Printf("RunScript ---")
+	// 启动ledshowktfw服务
+	cmd := exec.Command("./runner/app/bin/ledshowktfw")
 
-	// 如果有脚本正在运行，则先停止
-	if IsRunning {
-		StopScript()
-	}
-
-	// 初始化cmd变量
-	cmd = exec.CommandContext(ctx, "./runner/app/bin/ledshowktfw")
-	logger := log.New(os.Stdout, "cmd", log.LstdFlags)
-	// 将命令的标准输出重定向到日志记录器
-	cmd.Stdout = logger.Writer()
-	// 标记当前脚本正在运行
-	IsRunning = true
-	// 开始执行命令
-	if err := cmd.Start(); err != nil {
-		pkg.Log.Error("Failed to start script: %v\n", err)
-		IsRunning = false
+	// 创建管道来捕获命令的输出
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		fmt.Println("Error:", err)
 		return
 	}
 
-	// 监听取消信号，一旦收到取消信号，就终止脚本执行
-	go func() {
-		<-ctx.Done()
-		pkg.Log.Println("Cancellation signal received, terminating script...")
-		if err := StopScript(); err != nil {
-			pkg.Log.Printf("Failed to stop script: %v\n", err)
-		}
-		// 标记脚本执行完成
-		IsRunning = false
-	}()
+	// 启动命令
+	if err := cmd.Start(); err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
 
-	// 等待命令执行完成
+	// 读取并输出命令的输出
+	scanner := bufio.NewScanner(stdout)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+
+	// 检查是否发生错误
+	if err := scanner.Err(); err != nil {
+		fmt.Println("Error:", err)
+	}
+
+	// 等待命令完成
 	if err := cmd.Wait(); err != nil {
-		pkg.Log.Printf("Script execution error: %v\n", err)
-	} else {
-		pkg.Log.Println("Script execution completed successfully")
+		fmt.Println("Error:", err)
 	}
 }
 
 func StopScript() error {
 	kill6688()
-	if cmd == nil || cmd.Process == nil {
-		return nil
-	}
-	// 向脚本进程发送SIGTERM信号，优雅地关闭
-	if err := cmd.Process.Signal(os.Kill); err != nil {
-		return fmt.Errorf("failed to send SIGINT to process: %v", err)
-	}
-
-	// 等待脚本进程退出
-	_, err := cmd.Process.Wait()
-	if err != nil {
-		return fmt.Errorf("failed to wait for process exit: %v", err)
-	}
-
 	return nil
 }
 func kill6688() {
-	// 获取监听在端口6688的进程的PID
-	pid, err := findProcessID(6688)
+	// 执行Shell脚本
+	cmd := exec.Command("/bin/sh", "-c", "./kill6688.sh")
+	// 执行命令并获取输出
+	output, err := cmd.CombinedOutput()
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
 	}
-
-	// 打开进程
-	process, err := os.FindProcess(pid)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	// 向进程发送SIGKILL信号
-	err = process.Kill()
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	fmt.Println("Process with PID", pid, "has been killed")
+	// 输出执行结果
+	fmt.Println(string(output))
 }
+func runKtorSever() {
 
-func findProcessID(port int) (int, error) {
-	// 获取所有TCP监听的端口
-	addrs, err := net.InterfaceAddrs()
-	if err != nil {
-		return 0, err
-	}
-
-	// 遍历所有监听的端口，找到占用指定端口的进程的PID
-	for _, addr := range addrs {
-		if addr.Network() == "tcp" {
-			tcpAddr := addr.(*net.IPNet)
-			if tcpAddr.IP.IsLoopback() {
-				continue
-			}
-			addrString := tcpAddr.IP.String() + ":" + fmt.Sprintf("%d", port)
-			conn, err := net.Dial("tcp", addrString)
-			if err != nil {
-				continue
-			}
-			conn.Close()
-
-			cmd := exec.Command("lsof", "-i", fmt.Sprintf(":%d", port), "-t")
-			output, err := cmd.Output()
-			if err != nil {
-				return 0, err
-			}
-
-			pid := string(output)
-			return strconv.Atoi(strings.TrimSpace(pid))
-		}
-	}
-	return 0, fmt.Errorf("Process not found")
 }
